@@ -1,0 +1,26 @@
+- name: Create user Juri (linux_user)
+  ansible.builtin.user:
+    name: juri
+
+- name: Create a key for Juri
+  ansible.posix.authorized_key:
+    user: juri
+    key: https://github.com/hudolejev.keys
+
+
+- name: Create user Roman
+  ansible.builtin.user:
+    name: roman
+
+- name: Create a key for Roman
+  ansible.posix.authorized_key:
+    user: roman
+    key: https://github.com/romankuchin.keys
+
+
+
+- name
+
+- name: Install the package "focal"
+  apt:
+    name: focal

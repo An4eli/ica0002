@@ -1,1 +1,4 @@
-An4eli-1 ansible_host=193.40.156.86 ansible_port=6422 ansible_ssh_user=ubuntu
+An4eli-1 ansible_host=193.40.156.86 ansible_port=5522 ansible_ssh_user=ubuntu
+
+[web_servers]
+An4eli-1
