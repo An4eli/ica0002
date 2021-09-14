@@ -1,0 +1,10 @@
+- name: Nginx web server
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Copy html file to server
+  ansible.builtin.copy:
+    src: /Users/annelivali/Desktop/ica0002/roles/nginx/files/index.html
+    dest: /var/www/html

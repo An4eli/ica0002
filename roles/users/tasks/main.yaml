@@ -16,11 +16,3 @@
   ansible.posix.authorized_key:
     user: roman
     key: https://github.com/romankuchin.keys
-
-
-
-- name
-
-- name: Install the package "focal"
-  apt:
-    name: focal
