@@ -1,0 +1,19 @@
+- name: Install packages 
+  apt:
+    name:
+      - uwsgi
+      - uwsgi-plugin-python3
+    # update_cache: yes
+
+- name: 
+  ansible.builtin.copy:
+    src: agama.ini
+    dest: /etc/uwsgi/apps-enabled/agama.ini
+    mode: 0644
+  notify: Restart uWSGI
+
+- name: Start service if not started
+  ansible.builtin.service:
+    name: 
+    state: started
+    enbled: yes  
