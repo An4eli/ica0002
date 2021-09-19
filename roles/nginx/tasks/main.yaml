@@ -5,5 +5,6 @@
 
 - name: Copy html file to server
   ansible.builtin.copy:
-    src: /Users/annelivali/Desktop/ica0002/roles/nginx/files/index.html
-    dest: /var/www/html
+    src: /Users/annelivali/Desktop/ica0002/roles/nginx/files/default
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart nginx

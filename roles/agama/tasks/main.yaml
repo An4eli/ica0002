@@ -1,27 +1,10 @@
-- name: Create user agama
-  ansible.builtin.user:
-    name: agama
-
-- name: Create a directory 
-  ansible.builtin.file:
-    path: /opt/agama
-    state: directory
-    mode: 0755
-
 - name: Install dependencies
   apt:
     name: python3-flask-sqlalchemy
     update_cache: yes
-
 
 - name: Install agama
   get_url:
     url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
     dest: /opt/agama/agama.py
     mode: 0644
-  
-- name: Start service if not started
-  ansible.builtin.service:
-    name: 
-    state: started
-    enbled: yes
