@@ -10,7 +10,7 @@
     state: started
     enabled: yes
 
-- name: Copy agama.conf
+- name: Copy agama conf
   ansible.builtin.copy:
     src: /Users/annelivali/Desktop/ica0002/roles/uwsgi/files/agama.ini
     dest: /etc/uwsgi/apps-enabled/agama.ini
