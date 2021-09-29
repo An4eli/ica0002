@@ -19,4 +19,9 @@
       - uwsgi
       - nginx
 
-      
+     
+  - name: DNS servers
+    become: yes
+    hosts: dns_servers
+    roles:
+      - bind
