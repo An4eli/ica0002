@@ -4,4 +4,3 @@
 
 - name: Collect info about all VMs
   ansible.builtin.setup:
-

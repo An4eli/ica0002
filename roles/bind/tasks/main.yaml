@@ -9,7 +9,7 @@
 
 - template:
     src: db.boom
-    dest: /var/cache/bind/db.boom
+    dest: /etc/bind/db.boom
   notify: Reload bind9 
 
 - template:

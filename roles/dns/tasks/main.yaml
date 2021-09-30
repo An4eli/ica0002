@@ -1,0 +1,14 @@
+- name: Stop service
+  ansible.builtin.service:
+    name: systemd-resolved
+    state: stopped
+
+- name: Copy 
+  ansible.builtin.template:
+     src: resolv.conf.j2
+     dest: /etc/resolv.conf
+
+- name: Start service
+  ansible.builtin.service:
+    name: systemd-resolved
+    state: started

@@ -1,4 +1,4 @@
-mysql_host: 192.168.42.70
+mysql_host: vm-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -19,4 +19,6 @@ forwarders:
   - 8.8.8.8
   - 9.9.9.9
 
-email: an4elivali@gmail.com
+email: an4elivali.gmail.com
+
+startup_name: boom.io

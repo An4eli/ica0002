@@ -1,17 +1,15 @@
 - name: Nginx web server
   ansible.builtin.apt:
     name: nginx
-    update_cache: yes
-
 
 - name: Copy html file to server
   ansible.builtin.copy:
-     src: /Users/annelivali/Desktop/ica0002/roles/nginx/files/index.html
+     src: index.html
      dest: /var/www/html 
 
 
 - name: Copy html file to server
   ansible.builtin.copy:
-    src: /Users/annelivali/Desktop/ica0002/roles/nginx/files/default
+    src: default
     dest: /etc/nginx/sites-enabled/default
   notify: Restart nginx
