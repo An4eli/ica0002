@@ -12,7 +12,7 @@
 
 - name: Copy agama conf
   template:
-    src: /Users/annelivali/Desktop/ica0002/roles/uwsgi/templates/agama.ini
+    src: agama.ini
     dest: /etc/uwsgi/apps-enabled/agama.ini
     mode: 0644
   notify: Restart uWSGI

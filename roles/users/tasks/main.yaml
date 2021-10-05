@@ -7,7 +7,6 @@
      user: juri
      key: https://github.com/hudolejev.keys
 
-
  - name: Create user Roman
    ansible.builtin.user:
      name: roman

@@ -2,14 +2,19 @@
   ansible.builtin.apt:
     name: nginx
 
-- name: Copy html file to server
-  ansible.builtin.copy:
-     src: index.html
-     dest: /var/www/html 
-
+# - name: Copy html file to server
+#   ansible.builtin.copy:
+#      src: index.html
+#      dest: /var/www/html
 
 - name: Copy html file to server
   ansible.builtin.copy:
     src: default
     dest: /etc/nginx/sites-enabled/default
   notify: Restart nginx
+
+- name: Start nginx
+  service:
+      name: nginx
+      state: started
+      enabled: yes

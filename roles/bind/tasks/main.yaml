@@ -1,18 +1,27 @@
 - name: bind9
-  apt:
+  ansible.builtin.apt:
     name: bind9
 
-- template:
-    src: named.conf.objects.j2
+- name: Start bind9
+  service:
+    name: bind9
+    state: started
+    enabled: yes
+
+- name: Move bind9 conf
+  template:
+    src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
   notify: Restart bind9
 
-- template:
+- name: Move db conf
+  template:
     src: db.boom
-    dest: /etc/bind/db.boom
-  notify: Reload bind9 
+    dest: /var/cache/bind/db.boom
+  notify: Reload bind9
 
-- template:
-    src: name.conf.local.j2
+- name: Move conf local
+  template:
+    src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
   notify: Restart bind9

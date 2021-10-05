@@ -1,9 +1,16 @@
 ---
   - name: Init
     become: yes
-    hosts: all
+    hosts:
+      - web_servers
+      - db_servers
     roles:
       - init
+
+  - name: Collect info about all VMs
+    hosts: all
+    tasks:
+      - setup:
 
   - name: Database server
     become: yes

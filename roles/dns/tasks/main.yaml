@@ -2,13 +2,9 @@
   ansible.builtin.service:
     name: systemd-resolved
     state: stopped
+    enabled: no
 
-- name: Copy 
+- name: Move
   ansible.builtin.template:
-     src: resolv.conf.j2
+     src: resolv.conf
      dest: /etc/resolv.conf
-
-- name: Start service
-  ansible.builtin.service:
-    name: systemd-resolved
-    state: started

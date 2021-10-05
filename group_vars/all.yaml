@@ -1,4 +1,4 @@
-mysql_host: vm-2
+mysql_host: An4eli-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -8,16 +8,16 @@ mysql_password: !vault |
           36636538356265653531663036333739313765613362646664396633303336633166313839363264
           6338626436313038610a626136653337383134663634303532623631633162663762373762303834
           3734
- 
-          
+
+
 localnetwork: 192.168.42.0/24
 localhost: 127.0.0.0/8
 
 forwarders:
-  - 9.9.9.10
   - 1.1.1.1
   - 8.8.8.8
   - 9.9.9.9
+  - 9.9.9.10
 
 email: an4elivali.gmail.com
 

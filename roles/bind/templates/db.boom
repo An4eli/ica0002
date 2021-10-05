@@ -1,12 +1,15 @@
 $TTL	604800
-boom.io.	IN	SOA	vm-2.boom.io. {{ email }} (
+boom.io.	IN	SOA	vm-2.boom.io. {{email}} (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-boom.io.	IN	NS	vm-2
+{% for vm in groups['dns_servers'] %}
+boom.io.	IN	NS	{{ vm }}
+{% endfor %}
 
-vm-1	IN	A	{{ hostvars['An4eli-1']['ansible_default_ipv4']['address'] }}
-vm-2	IN	A   {{ hostvars['An4eli-2']['ansible_default_ipv4']['address'] }}
+{% for vm in groups['all'] %}
+{{ vm }} IN A {{hostvars[vm]['ansible_default_ipv4']['address']}}
+{% endfor %}
