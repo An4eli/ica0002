@@ -1,0 +1,21 @@
+- name: Inst prometheus
+  ansible.builtin.apt:
+    name: prometheus
+
+- name: Prometheus
+  service:
+    name: prometheus
+    state: started
+    enabled: yes
+
+- name: Move prometeus conf
+  template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+  notify: Restart prometheus
+
+- name: Move prometeus conf
+  template:
+    src: prometheus
+    dest: /etc/default/prometheus
+  notify: Restart prometheus

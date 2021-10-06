@@ -24,6 +24,11 @@
     roles:
       - agama
       - uwsgi
+
+  - name: Web server
+    become: yes
+    hosts: all
+    roles:
       - nginx
  
   - name: DNS servers
@@ -37,3 +42,15 @@
     hosts: all
     roles:
       - dns
+
+  - name: Node exporters
+    become: yes
+    hosts: all
+    roles:
+      - node_exporter
+
+  - name: Prometheus
+    become: yes
+    hosts: prometheus
+    roles:
+      - prometheus

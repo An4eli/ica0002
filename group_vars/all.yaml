@@ -22,3 +22,5 @@ forwarders:
 email: an4elivali.gmail.com
 
 startup_name: boom.io
+
+public_ip: 193.40.156.86:18980

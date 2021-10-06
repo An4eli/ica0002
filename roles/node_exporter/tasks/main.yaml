@@ -1,0 +1,9 @@
+- name: Inst nd exp
+  ansible.builtin.apt:
+    name: prometheus-node-exporter
+
+- name: Nd exp start
+  service:
+    name: prometheus-node-exporter
+    state: started
+    enabled: yes
