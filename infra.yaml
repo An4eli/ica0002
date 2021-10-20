@@ -30,12 +30,19 @@
     hosts: all
     roles:
       - nginx
+  
+  - name: Web server
+    become: yes
+    hosts: all
+    roles:
+      - nginx_exporter
  
   - name: DNS servers
     become: yes
     hosts: dns_servers
     roles:
       - bind
+      - bind_exporter
 
   - name: DNS
     become: yes
@@ -54,3 +61,15 @@
     hosts: prometheus
     roles:
       - prometheus
+
+  - name: Database server
+    become: yes
+    hosts: db_servers
+    roles: 
+      - mysql_exporter
+
+  - name: Grafana server
+    become: yes
+    hosts: grafana
+    roles: 
+      - grafana

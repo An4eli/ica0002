@@ -1,0 +1,9 @@
+- name: Inst nd exp
+  ansible.builtin.apt:
+    name: prometheus-bind-exporter
+
+- name: Start bind9 exporter
+  service:
+      name: prometheus-bind-exporter
+      state: started
+      enabled: yes  
