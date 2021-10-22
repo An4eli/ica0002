@@ -2,3 +2,9 @@
   ansible.builtin.service:
       name: grafana-server
       state: restarted
+
+- name: Change password
+  shell: |
+    sleep 30
+    grafana-cli admin reset-admin-password {{grafana_pass}}
+    

@@ -9,6 +9,7 @@
 - name: grafana
   ansible.builtin.apt:
     name: grafana
+  notify: Change password
 
 - name: Start grafana
   service:
@@ -20,4 +21,22 @@
   ansible.builtin.template:
     src: grafana.ini.j2
     dest: /etc/grafana/grafana.ini
+  notify: Restart grafana
+
+- name: Move data source
+  ansible.builtin.template:
+    src: prometheus.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/prometheus.yaml
+  notify: Restart grafana
+  
+- name: Move dasboard 
+  ansible.builtin.template:
+    src: dashboard.yaml.j2
+    dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
+  notify: Restart grafana
+
+- name: Move dasboard json
+  ansible.builtin.copy:
+    src: main.json
+    dest: /etc/grafana/provisioning/dashboards/main.json
   notify: Restart grafana
