@@ -1,0 +1,11 @@
+- name: Start rsyslog
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes
+
+- name: Copy rsyslog conf
+  template:
+    src: telegraf.conf
+    dest: /etc/rsyslog.d/50-telegraf.conf
+  notify: Restart rsyslog

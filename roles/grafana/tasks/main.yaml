@@ -28,6 +28,12 @@
     src: prometheus.yaml.j2
     dest: /etc/grafana/provisioning/datasources/prometheus.yaml
   notify: Restart grafana
+
+- name: Move data source
+  ansible.builtin.template:
+    src: influxdb.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/influxdb.yaml
+  notify: Restart grafana
   
 - name: Move dasboard 
   ansible.builtin.template:

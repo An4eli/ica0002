@@ -1,0 +1,33 @@
+- name: Add an Apt signing key, uses whichever key is at the URL
+  ansible.builtin.apt_key:
+    url: https://repos.influxdata.com/influxdb.key
+
+- name: Add specified repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb https://repos.influxdata.com/ubuntu focal stable
+
+- name: influxdb
+  ansible.builtin.apt:
+    name: influxdb
+
+- name: Start influxdb
+  service:
+      name: influxdb
+      state: started
+      enabled: yes
+
+- name: Intsall telegraf
+  ansible.builtin.apt:
+    name: telegraf
+
+- name: Start telegraf
+  service:
+      name: telegraf
+      state: started
+      enabled: yes
+
+- name: Move conf
+  ansible.builtin.copy:
+    src: telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+  notify: Restart telegraf
