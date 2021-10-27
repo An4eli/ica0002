@@ -6,6 +6,7 @@
       - db_servers
     roles:
       - init
+      - backup
 
   - name: Collect info about all VMs
     hosts: all
