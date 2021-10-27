@@ -31,3 +31,9 @@
     src: telegraf.conf
     dest: /etc/telegraf/telegraf.conf
   notify: Restart telegraf
+
+- name: Move conf
+  ansible.builtin.copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: Restart telegraf

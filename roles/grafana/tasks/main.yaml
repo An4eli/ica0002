@@ -23,26 +23,38 @@
     dest: /etc/grafana/grafana.ini
   notify: Restart grafana
 
-- name: Move data source
+- name: Move prometheus data source
   ansible.builtin.template:
     src: prometheus.yaml.j2
     dest: /etc/grafana/provisioning/datasources/prometheus.yaml
   notify: Restart grafana
 
-- name: Move data source
+- name: Move influxdb data source
   ansible.builtin.template:
     src: influxdb.yaml.j2
     dest: /etc/grafana/provisioning/datasources/influxdb.yaml
   notify: Restart grafana
   
-- name: Move dasboard 
+- name: Move influxdb telegarf data source
+  ansible.builtin.template:
+    src: influxdbtelegraf.yaml.j2
+    dest: /etc/grafana/provisioning/datasources/influxdbtelegraf.yaml
+  notify: Restart grafana
+  
+- name: Move dasboard conf
   ansible.builtin.template:
     src: dashboard.yaml.j2
     dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
   notify: Restart grafana
 
-- name: Move dasboard json
+- name: Move main dasboard json
   ansible.builtin.copy:
     src: main.json
     dest: /etc/grafana/provisioning/dashboards/main.json
+  notify: Restart grafana
+
+- name: Move syslog dasboard json
+  ansible.builtin.copy:
+    src: syslog.json
+    dest: /etc/grafana/provisioning/dashboards/syslog.json
   notify: Restart grafana

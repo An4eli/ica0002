@@ -92,3 +92,8 @@
     roles: 
       - rsyslog
       
+  - name: Influxdb exporter
+    become: yes
+    hosts: influxdb
+    roles: 
+      - influxdb_exporter

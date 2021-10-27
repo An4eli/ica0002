@@ -1,0 +1,11 @@
+[Unit]
+Description=Service for influxdb stats
+Documentation=Some documentation
+After=network-online.target
+
+[Service]
+User=prometheus
+ExecStart=/usr/local/bin//influx_stats_exporter
+
+[Install]
+WantedBy=multi-user.target
