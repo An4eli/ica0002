@@ -1,0 +1,33 @@
+- name: Create directory
+  ansible.builtin.file:
+    path: /home/bacup/mysql
+    owner: backup
+    mode: 0755
+    state: directory
+
+- name: Move conf
+  ansible.builtin.template:
+    src: .my.cnf.j2
+    dest: /home/backup/.my.cnf
+
+- name: MySQL-backup user
+  community.mysql.mysql_user:
+    name: "{{ mysql_backup_user }}"
+    password: "{{ mysql_backup_user_pass }}"
+    host: "%"
+    priv:
+      '*.*': 'LOCK TABLES,SELECT'
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+
+- name: Create directory
+  ansible.builtin.file:
+    path: /home/backup/mysql
+    owner: backup
+    mode: 0755
+    state: directory
+
+- name: Move conf
+  ansible.builtin.template:
+    src: mysql-backup
+    dest: /etc/cron.d/mysql-backup

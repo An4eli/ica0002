@@ -4,3 +4,23 @@
     home: /home/backup
     shell: /bin/bash
     generate_ssh_key: yes
+
+- name: Create directory
+  ansible.builtin.file:
+    path: /home/bacup/restore
+    owner: backup
+    mode: 0644
+    state: directory
+
+- name: Install duplicity
+  ansible.builtin.apt:
+    name: duplicity
+
+- name: Move conf
+  template:
+    owner: backup
+    group: backup
+    mode: 0644
+    src: known_hosts.j2
+    dest: /home/backup/.ssh/known_hosts
+    

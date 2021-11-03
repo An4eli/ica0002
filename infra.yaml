@@ -98,3 +98,15 @@
     hosts: influxdb
     roles: 
       - influxdb_exporter
+
+  - name: Database server
+    become: yes
+    hosts: db_servers
+    roles: 
+      - mysql_backup
+
+  - name: Influxdb
+    become: yes
+    hosts: influxdb
+    roles: 
+      - influxdb_backup  

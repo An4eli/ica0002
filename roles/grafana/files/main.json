@@ -38,11 +38,11 @@
               "options": {
                 "0": {
                   "index": 1,
-                  "text": "down"
+                  "text": "🥀"
                 },
                 "1": {
                   "index": 0,
-                  "text": "up"
+                  "text": "🌹"
                 }
               },
               "type": "value"
@@ -250,11 +250,11 @@
               "options": {
                 "0": {
                   "index": 1,
-                  "text": "down"
+                  "text": "🥀"
                 },
                 "1": {
                   "index": 0,
-                  "text": "up"
+                  "text": "🌹"
                 }
               },
               "type": "value"
@@ -490,11 +490,11 @@
               "options": {
                 "0": {
                   "index": 1,
-                  "text": "down"
+                  "text": "🥀"
                 },
                 "1": {
                   "index": 0,
-                  "text": "up"
+                  "text": "🌹"
                 }
               },
               "type": "value"
@@ -919,12 +919,12 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Main",
   "uid": "b61TMbO7z",
-  "version": 1
+  "version": 2
 }
