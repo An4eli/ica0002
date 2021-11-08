@@ -1,4 +1,4 @@
-- name: Inst nd exp
+- name: Install mysqld-exporter
   ansible.builtin.apt:
     name: prometheus-mysqld-exporter
 
@@ -9,7 +9,7 @@
   notify: Restart mysql-exporter
 
 
-- name: MySQL-exporter user
+- name: Create MySQL-exporter user
   community.mysql.mysql_user:
     name: "{{ mysql_exporter_user }}"
     password: "{{ mysql_exporter_pass }}"
@@ -23,7 +23,7 @@
     seconds: 10
 
 - name: Start mysql exporter
-  service:
+  ansible.builtin.service:
       name: prometheus-mysqld-exporter
       state: started
       enabled: yes

@@ -6,12 +6,12 @@
   ansible.builtin.apt_repository:
     repo: deb https://packages.grafana.com/oss/deb stable main
 
-- name: grafana
+- name: Install grafana
   ansible.builtin.apt:
     name: grafana
-  notify: Change password
+  notify: Change password for grafana user
 
-- name: Start grafana
+- name: Start service grafana
   service:
       name: grafana-server
       state: started

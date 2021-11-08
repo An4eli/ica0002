@@ -3,7 +3,7 @@
     name: bind9
 
 - name: Start bind9
-  service:
+  ansible.builtin.service:
     name: bind9
     state: started
     enabled: yes
@@ -15,13 +15,13 @@
   notify: Restart bind9
 
 - name: Move db conf
-  template:
+  ansible.builtin.template:
     src: db.boom
     dest: /var/cache/bind/db.boom
   notify: Reload bind9
 
-- name: Move conf local
-  template:
+- name: Move local conf
+  ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
   notify: Restart bind9

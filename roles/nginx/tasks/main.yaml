@@ -14,7 +14,7 @@
   notify: Restart nginx
 
 - name: Start nginx
-  service:
+  ansible.builtin.service:
       name: nginx
       state: started
       enabled: yes

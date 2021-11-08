@@ -1,6 +1,6 @@
 - name: Create directory
   ansible.builtin.file:
-    path: /home/bacup/influxdb
+    path: /home/backup/influxdb
     owner: backup
     mode: 0755
     state: directory

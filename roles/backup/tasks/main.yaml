@@ -7,7 +7,7 @@
 
 - name: Create directory
   ansible.builtin.file:
-    path: /home/bacup/restore
+    path: /home/backup/restore
     owner: backup
     mode: 0644
     state: directory
@@ -16,8 +16,8 @@
   ansible.builtin.apt:
     name: duplicity
 
-- name: Move conf
-  template:
+- name: Move conf of known hosts
+  ansible.builtin.template:
     owner: backup
     group: backup
     mode: 0644

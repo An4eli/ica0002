@@ -1,27 +1,27 @@
-- name: mysql
+- name: Install independencies for MySQL
   ansible.builtin.apt:
     name: 
       - mysql-server
       - python3-pymysql
 
-- name: Started service
-  service:
+- name: Started service MySQL
+  ansible.builtin.service:
     name: mysql
     state: started
     enabled: yes
 
-- name: Copy override to location
+- name: Copy override conf to location
   ansible.builtin.copy:
     src: override.cnf
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
   notify: Restart mysql
 
-- name: MySQL database
+- name: Create MySQL database
   community.mysql.mysql_db:
     name: "{{ mysql_database }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
-- name: MySQL user
+- name: Create MySQL user
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"

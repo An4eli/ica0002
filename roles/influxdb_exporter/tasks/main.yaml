@@ -12,8 +12,8 @@
     - Restart influxdb stats exporter
     - Reload systemd
 
-- name: Prometheus
-  service:
+- name: Start influxdb-stats-exporter
+  ansible.builtin.service:
     name: prometheus-influxdb-stats-exporter
     state: started
     enabled: yes

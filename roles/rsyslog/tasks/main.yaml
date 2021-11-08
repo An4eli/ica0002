@@ -1,11 +1,11 @@
 - name: Start rsyslog
-  service:
+  ansible.builtin.service:
     name: rsyslog
     state: started
     enabled: yes
 
 - name: Copy rsyslog conf
-  template:
+  ansible.builtin.template:
     src: telegraf.conf
     dest: /etc/rsyslog.d/50-telegraf.conf
   notify: Restart rsyslog

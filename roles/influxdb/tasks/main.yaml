@@ -6,21 +6,21 @@
   ansible.builtin.apt_repository:
     repo: deb https://repos.influxdata.com/ubuntu focal stable
 
-- name: influxdb
+- name: Install influxdb
   ansible.builtin.apt:
     name: influxdb
 
-- name: Start influxdb
-  service:
-      name: influxdb
-      state: started
-      enabled: yes
+- name: Start service influxdb
+  ansible.builtin.service:
+    name: influxdb
+    state: started
+    enabled: yes
 
 - name: Intsall telegraf
   ansible.builtin.apt:
     name: telegraf
 
-- name: Start telegraf
+- name: Start service telegraf
   service:
       name: telegraf
       state: started

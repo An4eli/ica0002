@@ -1,4 +1,4 @@
-- name: Create user Juri (linux_user)
+- name: Create user Juri 
    ansible.builtin.user:
      name: juri
 

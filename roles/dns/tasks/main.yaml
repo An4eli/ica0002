@@ -1,10 +1,10 @@
-- name: Stop service
+- name: Stop systemd service
   ansible.builtin.service:
     name: systemd-resolved
     state: stopped
     enabled: no
 
-- name: Move
+- name: Move conf
   ansible.builtin.template:
      src: resolv.conf
      dest: /etc/resolv.conf

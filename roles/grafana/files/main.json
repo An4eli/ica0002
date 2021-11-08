@@ -86,7 +86,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -96,7 +96,7 @@
           "refId": "A"
         }
       ],
-      "title": "bind9",
+      "title": "Bind9",
       "type": "stat"
     },
     {
@@ -174,11 +174,11 @@
           "exemplar": true,
           "expr": "rate(bind_resolver_queries_total{type=\"A\"}[1m])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "title": "bind9 DNS queries",
+      "title": "DNS query rate",
       "type": "timeseries"
     },
     {
@@ -225,13 +225,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
           "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[30m])) * 100)",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -298,7 +298,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
@@ -308,7 +308,7 @@
           "refId": "A"
         }
       ],
-      "title": "mysql",
+      "title": "MySQL",
       "type": "stat"
     },
     {
@@ -386,11 +386,11 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_commands_total{command=\"select\"}[1m])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "title": "mysql selects",
+      "title": "MySQL query rate",
       "type": "timeseries"
     },
     {
@@ -469,13 +469,13 @@
           "exemplar": true,
           "expr": "node_memory_MemTotal_bytes -node_memory_MemFree_bytes",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Memory consumption",
+      "title": "Memory usage",
       "type": "timeseries"
     },
     {
@@ -538,17 +538,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.2",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": true,
           "expr": "nginx_up",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "title": "nginx",
+      "title": "Nginx",
       "type": "stat"
     },
     {
@@ -626,11 +626,11 @@
           "exemplar": true,
           "expr": "rate(nginx_http_requests_total[1m])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
-      "title": "nginx requests",
+      "title": "Nginx request rate",
       "type": "timeseries"
     },
     {
@@ -823,7 +823,7 @@
           "exemplar": true,
           "expr": "influxdb_exporter_stats_query_success",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -904,7 +904,7 @@
           "exemplar": true,
           "expr": "influxdb_write_write_ok",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{instance}}",
           "refId": "A"
         }
       ],
@@ -926,5 +926,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "b61TMbO7z",
-  "version": 2
+  "version": 1
 }
