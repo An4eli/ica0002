@@ -1,6 +1,6 @@
 - name: Create directory
   ansible.builtin.file:
-    path: /home/bacup/mysql
+    path: /home/backup/mysql
     owner: backup
     mode: 0755
     state: directory

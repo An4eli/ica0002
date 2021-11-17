@@ -1,0 +1,4 @@
+36 17 * * * backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
+
+37 17 * * *  backup  duplicity --no-encryption full /home/backup/influxdb/ rsync://An4eli@backup.boom.io//home/An4eli/
+38 17 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/influxdb/ rsync://An4eli@backup.boom.io//home/An4eli/
