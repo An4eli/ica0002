@@ -66,3 +66,7 @@ mysql_replication_pass: !vault |
           6333
 
 node_id: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'].split('.')[-1] }}"
+
+grafana_port: 3001
+
+docker: 172.17.0.0/16

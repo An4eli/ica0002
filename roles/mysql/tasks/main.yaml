@@ -31,6 +31,15 @@
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
+- name: Create MySQL replication user
+  community.mysql.mysql_user:
+    name: "{{ mysql_replication_user }}"
+    password: "{{ mysql_replication_pass }}"
+    host: "%"
+    priv:
+      '*.*': 'REPLICATION SLAVE'
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
 - name: Set read only mode on/off
   community.mysql.mysql_variables:
     variable: read_only

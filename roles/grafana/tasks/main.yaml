@@ -1,67 +1,47 @@
-- name: Add an Apt signing key, uses whichever key is at the URL
-  ansible.builtin.apt_key:
-    url: https://packages.grafana.com/gpg.key
+- name: Create directory
+  ansible.builtin.file:
+    name: "/opt/grafana/provisioning/{{ item }}"
+    state: directory
+    recurse: yes
+  loop: 
+    - dashboards
+    - datasources
 
-- name: Add specified repository into sources list
-  ansible.builtin.apt_repository:
-    repo: deb https://packages.grafana.com/oss/deb stable main
-
-- name: Install grafana
-  ansible.builtin.apt:
-    name: grafana
-  notify: Change password for grafana user
-
-- name: Start service grafana
-  service:
-      name: grafana-server
-      state: started
-      enabled: yes
-  
-- name: Move conf
+- name: Grafana conf
   ansible.builtin.template:
     src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
-  notify: Restart grafana
+    dest: /opt/grafana/grafana.ini
+  no_log: yes
 
-- name: Move prometheus data source
-  ansible.builtin.template:
-    src: prometheus.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/prometheus.yaml
-  notify: Restart grafana
-
-- name: Move influxdb data source
-  ansible.builtin.template:
-    src: influxdb.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/influxdb.yaml
-  notify: Restart grafana
-  
-- name: Move influxdb telegarf data source
-  ansible.builtin.template:
-    src: influxdbtelegraf.yaml.j2
-    dest: /etc/grafana/provisioning/datasources/influxdbtelegraf.yaml
-  notify: Restart grafana
-  
-- name: Move dasboard conf
+- name: Grafana provisioning
   ansible.builtin.template:
     src: dashboard.yaml.j2
-    dest: /etc/grafana/provisioning/dashboards/dashboard.yaml
-  notify: Restart grafana
+    dest: /opt/grafana/provisioning/dashboards/default.yaml
 
-- name: Move main dasboard json
+- name: Grafana provisioning
+  ansible.builtin.template:
+    src: "{{item}}.yaml.j2"
+    dest: "/opt/grafana/provisioning/datasources/{{ item }}.yaml"
+  loop: 
+    - influxdb
+    - influxdbtelegraf
+    - prometheus
+
+- name: Grafana provisioning
   ansible.builtin.copy:
-    src: main.json
-    dest: /etc/grafana/provisioning/dashboards/main.json
-  notify: Restart grafana
+    src: "{{item}}.json"
+    dest: "/opt/grafana/provisioning/dashboards/{{ item }}.json"
+  loop: 
+    - main
+    - mysql
+    - syslog
 
-- name: Move syslog dasboard json
-  ansible.builtin.copy:
-    src: syslog.json
-    dest: /etc/grafana/provisioning/dashboards/syslog.json
-  notify: Restart grafana
+- name: Create grafana docker container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana
+    published_ports: "{{ grafana_port }}:3000"
+    volumes: /opt/grafana:/etc/grafana
+    container_default_behavior: no_defaults
 
 
-- name: Move mysql dasboard json
-  ansible.builtin.copy:
-    src: sql.json
-    dest: /etc/grafana/provisioning/dashboards/mysql.json
-  notify: Restart grafana

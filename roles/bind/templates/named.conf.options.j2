@@ -1,4 +1,4 @@
-acl corpnets { {{ localnetwork }}; {{ localhost }}; };
+acl corpnets { {{ localnetwork }}; {{ localhost }}; {{ docker }};};
 options {
     directory "/var/cache/bind";
     forwarders {
