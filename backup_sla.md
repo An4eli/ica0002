@@ -12,7 +12,7 @@ Backup service covers only database services, such as MySQL and InfluxDB, becaus
 
 Backup RPO (recovery point objective)
 Backup RPO for MySQL and InfluxDB would be 4 weeks (28 days). There will be two types of backups: full and incremential. Full backup contains all the backed up data and can be used to restore required data or service. It is done every Monday at 00:40 (UTC). 
-Incremental backup stores only the difference in the data between previous incremental backup and are done every day (except) at 00:40 (UTC).
+Incremental backup stores only the difference in the data between previous incremental backup and are done every day (except Monday) at 00:40 (UTC).
 
 
 Versioning and retention

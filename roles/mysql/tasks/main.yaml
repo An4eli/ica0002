@@ -4,17 +4,19 @@
       - mysql-server
       - python3-pymysql
 
+- name: Copy override conf to location
+  ansible.builtin.template:
+    src: mysqld.cnf.j2
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+  notify: Restart mysql
+
+
 - name: Started service MySQL
   ansible.builtin.service:
     name: mysql
     state: started
     enabled: yes
 
-- name: Copy override conf to location
-  ansible.builtin.copy:
-    src: override.cnf
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-  notify: Restart mysql
 
 - name: Create MySQL database
   community.mysql.mysql_db:
@@ -28,3 +30,13 @@
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Set read only mode on/off
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica

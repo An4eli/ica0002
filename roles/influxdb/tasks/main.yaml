@@ -26,14 +26,14 @@
       state: started
       enabled: yes
 
-- name: Move conf
+- name: Telegraf conf
   ansible.builtin.copy:
     src: telegraf.conf
     dest: /etc/telegraf/telegraf.conf
   notify: Restart telegraf
 
-- name: Move conf
+- name: Influxdb conf
   ansible.builtin.copy:
     src: influxdb.conf
     dest: /etc/influxdb/influxdb.conf
-  notify: Restart telegraf
+  notify: Restart influxdb

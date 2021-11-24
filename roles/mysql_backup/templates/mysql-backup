@@ -1,4 +1,6 @@
-19 16 * * *  backup mysqldump agama > /home/backup/mysql/agama.sql
+{% if inventory_hostname != mysql_host -%}
+38 00 * * *  backup mysqldump agama > /home/backup/mysql/agama.sql
 
-20 16 * * *  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://An4eli@backup.boom.io//home/An4eli/
-21 16 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://An4eli@backup.boom.io//home/An4eli/
+40 00 * * 0  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://An4eli@backup.boom.io//home/An4eli/
+40 00 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://An4eli@backup.boom.io//home/An4eli/
+{% endif -%}

@@ -21,7 +21,7 @@ duplicity --no-encryption restore rsync://An4eli@backup.boom.io//home/An4eli/ /h
 
 - To restore run this command as a root user:
 
-    mysql agama < /home/backup/mysql/agama.sql
+    mysql agama < /home/backup/restore/agama.sql
 
 
 
