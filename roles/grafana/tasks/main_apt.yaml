@@ -59,9 +59,8 @@
     dest: /etc/grafana/provisioning/dashboards/syslog.json
   notify: Restart grafana
 
-
 - name: Move mysql dasboard json
   ansible.builtin.copy:
-    src: sql.json
+    src: mysql.json
     dest: /etc/grafana/provisioning/dashboards/mysql.json
   notify: Restart grafana

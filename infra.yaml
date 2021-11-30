@@ -19,13 +19,6 @@
     roles: 
       - mysql
 
-  - name: App server
-    become: yes
-    hosts: web_app
-    roles:
-      - agama
-      - uwsgi
-
   - name: Web server
     become: yes
     hosts: web_servers
@@ -69,12 +62,23 @@
     roles: 
       - mysql_exporter
 
+  - name: Docker
+    become: yes
+    hosts: docker
+    roles: 
+      - docker
+
   - name: Grafana server
     become: yes
     hosts: grafana
     roles: 
-      - docker
       - grafana
+
+  - name: Web server
+    become: yes
+    hosts: web_app
+    roles:
+      - agama
 
   - name: Influxdb
     become: yes
@@ -111,3 +115,4 @@
     hosts: influxdb
     roles: 
       - influxdb_backup  
+ 

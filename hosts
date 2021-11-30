@@ -1,16 +1,16 @@
-An4eli-1 ansible_host=193.40.156.86 ansible_port=11022 ansible_user=ubuntu
-An4eli-2 ansible_host=193.40.156.86 ansible_port=17922 ansible_user=ubuntu 
+An4eli-1 ansible_host=193.40.156.86 ansible_port=12822 ansible_user=ubuntu
+An4eli-2 ansible_host=193.40.156.86 ansible_port=9922 ansible_user=ubuntu 
 
 [db_servers]
 An4eli-1
 An4eli-2
 
-[web_app]
-An4eli-2
-
 [web_servers]
 An4eli-1
 An4eli-2
+
+[web_app]
+An4eli-1
 
 [dns_servers]
 An4eli-2
@@ -28,4 +28,5 @@ An4eli-1
 An4eli-1
 
 [docker]
+An4eli-1
 An4eli-2

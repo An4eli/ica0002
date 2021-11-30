@@ -2,13 +2,6 @@ server {
     listen 80 default_server;
     server_name _;
 
-  {% if inventory_hostname in groups['web_servers'] %}
-    location / {
-        uwsgi_pass localhost:5000;
-        include uwsgi_params;
-    }
-    {% endif %}
-
     location /node-metrics {
         proxy_pass http://localhost:9100/metrics;
     }
@@ -21,7 +14,7 @@ server {
 
         {% if inventory_hostname in groups['grafana'] %}
         location /grafana {
-            proxy_pass http://localhost:{{grafana_port}} ;
+            proxy_pass http://localhost:{{ grafana_port }} ;
     }
     {% endif %}
 
@@ -46,6 +39,13 @@ server {
     {% if inventory_hostname in groups['influxdb'] %}
         location /influxdb-metrics {
             proxy_pass http://localhost:9424/metrics;
+    }
+    {% endif %}
+
+    {% if inventory_hostname in groups['web_app'] %}
+    location / {
+        proxy_pass http://localhost:8001;
+        proxy_set_header Host $http_host;
     }
     {% endif %}
 }
