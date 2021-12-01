@@ -12,13 +12,13 @@ server {
     }
     {% endif %}
 
-        {% if inventory_hostname in groups['grafana'] %}
+    {% if inventory_hostname in groups['grafana'] %}
         location /grafana {
             proxy_pass http://localhost:{{ grafana_port }} ;
     }
     {% endif %}
 
-        {% if inventory_hostname in groups['db_servers'] %}
+    {% if inventory_hostname in groups['db_servers'] %}
         location /mysql-metrics {
             proxy_pass http://localhost:9104/metrics;
     }
@@ -52,6 +52,12 @@ server {
     {% if inventory_hostname in groups['haproxy'] %}
         location /haproxy-metrics {
             proxy_pass http://localhost:9101/metrics;
+    }
+    {% endif %}
+
+    {% if inventory_hostname in groups['keepalived'] %}
+        location /keepalived-metrics {
+            proxy_pass http://localhost:9165/metrics;
     }
     {% endif %}
 }

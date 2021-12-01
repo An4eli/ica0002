@@ -18,3 +18,29 @@
   ansible.builtin.service:
     name: keepalived
     state: started
+
+- name: Install keepalived exporter
+  get_url: 
+    url: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+    dest: /var/local/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+
+- name: Unarchive keepalived exporter binary file
+  ansible.builtin.unarchive:
+    src: /var/local/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+    dest: /var/local/
+    remote_src: yes
+
+- name: Keepalived-exporter copy
+  ansible.builtin.copy:
+    src: /var/local/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
+    dest: /usr/local/bin/prometheus-keepalived-exporter
+    remote_src: yes
+    mode: 755
+
+- name: Copy conf
+  ansible.builtin.copy:
+    src: prometheus-keepalived-exporter.service
+    dest: /etc/systemd/system/prometheus-keepalived-exporter.service
+  notify: 
+    - Restart prometheus-keepalived-exporter
+    - Reload systemd

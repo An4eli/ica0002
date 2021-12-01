@@ -1,0 +1,11 @@
+[Unit]
+Description=Service for keepalived
+Documentation=Some documentation
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/prometheus-keepalived-exporter
+
+[Install]
+WantedBy=multi-user.target
