@@ -43,4 +43,5 @@
     published_ports: "{{ grafana_port }}:3000"
     volumes: /opt/grafana:/etc/grafana
     container_default_behavior: no_defaults
+ 
     

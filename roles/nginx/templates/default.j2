@@ -48,6 +48,12 @@ server {
         proxy_set_header Host $http_host;
     }
     {% endif %}
+
+    {% if inventory_hostname in groups['haproxy'] %}
+        location /haproxy-metrics {
+            proxy_pass http://localhost:9101/metrics;
+    }
+    {% endif %}
 }
 
 

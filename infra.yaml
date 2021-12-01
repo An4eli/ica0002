@@ -116,3 +116,20 @@
     roles: 
       - influxdb_backup  
  
+  - name: Keepalived
+    become: yes
+    hosts: keepalived
+    roles: 
+      - keepalived
+    tags: 
+      - k
+
+  - name: Haproxy
+    become: yes
+    hosts: haproxy
+    roles: 
+      - haproxy
+    tags: 
+      - h
+      
+  

@@ -2,13 +2,11 @@
   ansible.builtin.file:
     path: /opt/agama
     state: directory
-    mode: 0755
 
 - name: Install dockerfile
   get_url:
     url: https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile
     dest: /opt/agama/Dockerfile
-    mode: 0644
 
 - name: Build Docker image
   community.docker.docker_image:
@@ -19,9 +17,12 @@
 
 - name: Create agama docker container
   community.docker.docker_container:
-    name: agama
+    name: agama{{item}}
     image: agama
-    published_ports: 8001:8000
+    published_ports: "{{ 8000 + item}}:8000"
     container_default_behavior: no_defaults 
     env:
       AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+  loop:
+    - 1
+    - 2
