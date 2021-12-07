@@ -13,6 +13,29 @@
     tasks:
       - setup:
 
+  - name: DNS servers
+    become: yes
+    hosts: dns_servers
+    roles:
+      - bind
+      - bind_exporter
+    tags:
+      - b
+
+  - name: DNS records
+    become: yes
+    hosts: dns_master
+    roles:
+      - dns_records
+
+  - name: DNS
+    become: yes
+    hosts: all
+    roles:
+      - dns
+    tags:
+      - d
+
   - name: Database server
     become: yes
     hosts: db_servers
@@ -30,19 +53,6 @@
     hosts: all
     roles:
       - nginx_exporter
- 
-  - name: DNS servers
-    become: yes
-    hosts: dns_servers
-    roles:
-      - bind
-      - bind_exporter
-
-  - name: DNS
-    become: yes
-    hosts: all
-    roles:
-      - dns
 
   - name: Node exporters
     become: yes
@@ -79,6 +89,8 @@
     hosts: web_app
     roles:
       - agama
+    tags:
+      - a
 
   - name: Influxdb
     become: yes

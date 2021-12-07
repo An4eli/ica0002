@@ -1,5 +1,5 @@
 $TTL	604800
-{{startup_name}}.	IN	SOA	vm-2.{{startup_name}}. {{email}} (
+{{startup_name}}.	IN	SOA	An4eli-2.{{startup_name}}. {{email}} (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
@@ -13,5 +13,3 @@ $TTL	604800
 {% for vm in groups['all'] %}
 {{ vm }} IN A {{hostvars[vm]['ansible_default_ipv4']['address']}}
 {% endfor %}
-
-backup IN A {{backup_server}}

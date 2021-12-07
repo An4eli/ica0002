@@ -1,6 +1,9 @@
-- name: bind9
+- name: Install bind9 and dns features
   ansible.builtin.apt:
-    name: bind9
+    name: 
+      - bind9
+      - python3-dns
+      - python3-dnspython
 
 - name: Start bind9
   ansible.builtin.service:
@@ -14,11 +17,14 @@
     dest: /etc/bind/named.conf.options
   notify: Restart bind9
 
-- name: Move db conf
+- name: Move startup and reversed db conf
+  when: inventory_hostname in groups['dns_master']
   ansible.builtin.template:
-    src: db.boom
-    dest: /var/cache/bind/db.boom
-  notify: Reload bind9
+    src: db.{{item}}
+    dest: /var/cache/bind/db.{{item}}
+  loop:
+    - "{{startup_name}}"
+    - 42.168.192.in-addr.arpa
 
 - name: Move local conf
   ansible.builtin.template:

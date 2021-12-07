@@ -1,3 +1,23 @@
+- name: Iptable fix
+  ansible.builtin.template:
+    src: tablefix
+    dest: /var/local/iptables.mangle
+
+- name: Iptable state
+  community.general.iptables_state:
+    path: /var/local/iptables.mangle
+    state: restored
+    table: mangle
+
+- name: Install iptables-persistent
+  ansible.builtin.apt:
+    name: iptables-persistent
+
+- name: Saving iptables rules over reboot
+  ansible.builtin.template:
+    src: tablefix
+    dest: /etc/iptables/rules.v4
+
 - name: Install docker package
   ansible.builtin.apt:
     name: 

@@ -8,10 +8,16 @@
     dest: /etc/keepalived/keepalived.conf
   notify: Restart keepalived
 
+- name: Create a login user
+  ansible.builtin.user:
+    name: keepalived_script
+    home: /home/keepalived_script
+
 - name: Keepalived config
   ansible.builtin.template:
     src: haproxy88.j2
-    dest: /usr/local/bin/haproxy88
+    dest: /home/keepalived_script/haproxy88
+    owner: keepalived_script
     mode: 755
 
 - name: Keepalived started
