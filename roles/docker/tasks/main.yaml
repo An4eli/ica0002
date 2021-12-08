@@ -8,6 +8,8 @@
     path: /var/local/iptables.mangle
     state: restored
     table: mangle
+  poll: 0
+  async: 5
 
 - name: Install iptables-persistent
   ansible.builtin.apt:

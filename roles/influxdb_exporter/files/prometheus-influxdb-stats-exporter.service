@@ -1,6 +1,5 @@
 [Unit]
 Description=Service for influxdb stats
-Documentation=Some documentation
 After=network-online.target
 
 [Service]

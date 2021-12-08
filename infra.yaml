@@ -34,7 +34,7 @@
     roles:
       - dns
     tags:
-      - d
+      - dns
 
   - name: Database server
     become: yes
@@ -47,6 +47,8 @@
     hosts: web_servers
     roles:
       - nginx
+    tags:
+      - n 
   
   - name: Web server
     become: yes
@@ -76,6 +78,8 @@
     become: yes
     hosts: docker
     roles: 
+      - docker
+    tags:
       - docker
 
   - name: Grafana server

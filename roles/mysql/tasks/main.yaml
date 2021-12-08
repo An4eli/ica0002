@@ -10,13 +10,11 @@
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
   notify: Restart mysql
 
-
 - name: Started service MySQL
   ansible.builtin.service:
     name: mysql
     state: started
     enabled: yes
-
 
 - name: Create MySQL database
   community.mysql.mysql_db:

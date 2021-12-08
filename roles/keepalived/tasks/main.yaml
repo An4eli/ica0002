@@ -50,3 +50,9 @@
   notify: 
     - Restart prometheus-keepalived-exporter
     - Reload systemd
+
+- name: Start prometheus-keepalived-exporter
+  ansible.builtin.service:
+    name: prometheus-keepalived-exporter
+    state: started
+    enabled: yes

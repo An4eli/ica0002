@@ -1,6 +1,5 @@
 [Unit]
 Description=Service for pinger
-Documentation=Some documentation
 After=network-online.target
 
 [Service]

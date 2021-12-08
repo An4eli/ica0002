@@ -4,12 +4,6 @@
       - bind9
       - python3-dnspython
 
-- name: Start bind9
-  ansible.builtin.service:
-    name: bind9
-    state: started
-    enabled: yes
-
 - name: Move bind9 conf
   template:
     src: named.conf.options.j2
@@ -21,6 +15,7 @@
   ansible.builtin.template:
     src: db.{{item}}
     dest: /var/cache/bind/db.{{item}}
+    force: no
   loop:
     - "{{startup_name}}"
     - 42.168.192.in-addr.arpa
@@ -30,3 +25,9 @@
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
   notify: Restart bind9
+
+- name: Start bind9
+  ansible.builtin.service:
+    name: bind9
+    state: started
+    enabled: yes
