@@ -1,4 +1,4 @@
-mysql_host: An4eli-2
+mysql_host: An4eli-3
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -95,6 +95,9 @@ dns_transfer_key: !vault |
 
 dns_a_records:
   backup: 192.168.42.156
+  # An4eli-1: "{{hostvars['An4eli-1']['ansible_default_ipv4']['address']}}"
+  # An4eli-2: "{{hostvars['An4eli-2']['ansible_default_ipv4']['address']}}"
+  # An4eli-3: "{{hostvars['An4eli-3']['ansible_default_ipv4']['address']}}"
 
 dns_cname_records:
   grafana: "{{ groups['grafana'][0] }}"
@@ -105,6 +108,7 @@ dns_cname_records:
   mysql2: "{{ groups['db_servers'][1] }}"
   ns1: "{{ groups['dns_servers'][0] }}"
   ns2: "{{ groups['dns_servers'][1] }}"
+  ns3: "{{ groups['dns_servers'][2] }}"
   prometheus: "{{ groups['prometheus'][0] }}"
   web1: "{{ groups['web_servers'][0] }}"
-  web2: "{{ groups['web_servers'][1] }}"
+  web3: "{{ groups['web_servers'][2] }}"

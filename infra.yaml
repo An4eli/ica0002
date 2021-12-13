@@ -41,6 +41,8 @@
     hosts: db_servers
     roles: 
       - mysql
+    tags:
+      - m
 
   - name: Web server
     become: yes
@@ -68,7 +70,7 @@
     roles:
       - prometheus
 
-  - name: Database server
+  - name: Database server exporter
     become: yes
     hosts: db_servers
     roles: 
@@ -87,6 +89,8 @@
     hosts: grafana
     roles: 
       - grafana
+    tags:
+      - g
 
   - name: Web server
     become: yes

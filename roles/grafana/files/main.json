@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -64,7 +64,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
+        "w": 6,
         "x": 0,
         "y": 0
       },
@@ -84,7 +84,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -155,7 +155,7 @@
       "gridPos": {
         "h": 6,
         "w": 8,
-        "x": 4,
+        "x": 6,
         "y": 0
       },
       "id": 5,
@@ -172,6 +172,10 @@
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "rate(bind_resolver_queries_total{type=\"A\"}[1m])",
           "interval": "",
@@ -207,8 +211,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 12,
-        "x": 12,
+        "w": 10,
+        "x": 14,
         "y": 0
       },
       "id": 3,
@@ -224,7 +228,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -300,7 +304,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -519,7 +523,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
+        "w": 6,
         "x": 0,
         "y": 12
       },
@@ -539,7 +543,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "exemplar": true,
@@ -606,7 +610,7 @@
       "gridPos": {
         "h": 6,
         "w": 8,
-        "x": 4,
+        "x": 6,
         "y": 12
       },
       "id": 9,
@@ -656,13 +660,16 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 3,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -690,8 +697,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 12,
-        "x": 12,
+        "w": 10,
+        "x": 14,
         "y": 12
       },
       "id": 11,
@@ -811,7 +818,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -887,7 +894,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -963,7 +970,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
@@ -971,7 +978,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "haproxy_server_up{instance=\"An4eli-2:9101\"}",
+          "expr": "haproxy_server_up{instance=\"An4eli-3:9101\"}",
           "interval": "",
           "legendFormat": "{{server}}",
           "refId": "A"
@@ -990,27 +997,40 @@
             {
               "options": {
                 "1": {
+                  "color": "green",
                   "index": 1,
-                  "text": "Slave"
+                  "text": "slave"
                 },
                 "2": {
+                  "color": "green",
                   "index": 0,
-                  "text": "Master"
+                  "text": "master"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "dead"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "dark-red",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 1
+                "color": "#EAB839",
+                "value": 2
               }
             ]
           }
@@ -1018,15 +1038,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 3,
         "w": 4,
         "x": 20,
         "y": 18
       },
-      "id": 17,
+      "id": 23,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -1036,24 +1056,109 @@
           "fields": "",
           "values": false
         },
-        "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
-      "pluginVersion": "8.3.1",
+      "pluginVersion": "8.3.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "exemplar": true,
-          "expr": "keepalived_vrrp_state",
+          "exemplar": false,
+          "expr": "keepalived_vrrp_state{instance=\"An4eli-1:9165\"}",
+          "instant": true,
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Keepalived",
+      "title": "Keepalived An4eli-1",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "slave"
+                },
+                "2": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "master"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "dead"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 21
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "8.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
+          "expr": "keepalived_vrrp_state{instance=\"An4eli-3:9165\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Keepalived An4eli-3",
       "type": "stat"
     },
     {
@@ -1126,8 +1231,14 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "exemplar": true,
           "expr": "influxdb_exporter_stats_query_success",
+          "format": "time_series",
+          "instant": false,
           "interval": "",
           "legendFormat": "{{instance}}",
           "refId": "A"
@@ -1155,6 +1266,9 @@
               "viz": false
             },
             "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -1217,6 +1331,7 @@
       "type": "timeseries"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 33,
   "style": "dark",
   "tags": [],

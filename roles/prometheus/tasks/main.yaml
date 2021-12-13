@@ -19,3 +19,5 @@
     src: prometheus
     dest: /etc/default/prometheus
   notify: Restart prometheus
+
+  # ARGS="--web.external-url=http://{{ ansible_host }}:{{ansible_port - 22 + 80}}/prometheus"
