@@ -1,4 +1,4 @@
-An4eli-1 ansible_host=193.40.156.86 ansible_port=7222 ansible_user=ubuntu
+An4eli-1 ansible_host=193.40.156.86 ansible_port=16022 ansible_user=ubuntu
 An4eli-2 ansible_host=193.40.156.86 ansible_port=17322 ansible_user=ubuntu 
 An4eli-3 ansible_host=193.40.156.86 ansible_port=7922 ansible_user=ubuntu 
 
