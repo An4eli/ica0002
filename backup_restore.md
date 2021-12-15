@@ -17,6 +17,7 @@ Make sure backup was cretaed
 Check mysql/agama.sql and later restore/agama.sql
 
 - Download backup as a backup user:
+
 duplicity --no-encryption restore rsync://An4eli@backup.boom.io//home/An4eli/ /home/backup/restore/
 
 - To restore run this command as a root user:
@@ -34,7 +35,7 @@ Restore InfluxBD data from the backup:
     duplicity --no-encryption restore rsync://An4eli@backup.boom.io//home/An4eli/ /home/backup/restore/
 
 
-- To restore run this commands as a root user:
+To restore run this commands as a root user:
     service telegraf stop
     influx -execute 'DROP DATABASE telegraf'
     influxd restore -portable -database telegraf /home/backup/restore
