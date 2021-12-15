@@ -1,5 +1,10 @@
+global_defs {
+    enable_script_security
+    script_user keepalived_script
+}
+
 vrrp_script check_haproxy {                 
-    script "/home/keepalived_script/haprxoxy88" 
+    script "/home/keepalived_script/keepalivedscript" 
     weight 20                              
     interval 1               
 }

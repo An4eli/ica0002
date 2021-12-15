@@ -15,10 +15,10 @@
 
 - name: Keepalived config
   ansible.builtin.template:
-    src: haproxy88.j2
-    dest: /home/keepalived_script/haproxy88
+    src: keepalivedscript.j2
+    dest: /home/keepalived_script/keepalivedscript
     owner: keepalived_script
-    mode: 755
+    mode: 0755
 
 - name: Keepalived started
   ansible.builtin.service:
@@ -41,7 +41,7 @@
     src: /var/local/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
     dest: /usr/local/bin/prometheus-keepalived-exporter
     remote_src: yes
-    mode: 755
+    mode: 0755
 
 - name: Copy conf
   ansible.builtin.copy:

@@ -75,6 +75,8 @@
     hosts: db_servers
     roles: 
       - mysql_exporter
+    tags:
+      - me
 
   - name: Docker
     become: yes

@@ -8,6 +8,7 @@
   template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
+  no_log: True
   notify: Restart bind9
 
 - name: Move startup and reversed db conf
@@ -24,6 +25,7 @@
   ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
+  no_log: True
   notify: Restart bind9
 
 - name: Start bind9

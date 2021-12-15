@@ -1,10 +1,10 @@
-An4eli-1 ansible_host=193.40.156.86 ansible_port=12022 ansible_user=ubuntu
-An4eli-2 ansible_host=193.40.156.86 ansible_port=17222 ansible_user=ubuntu 
-An4eli-3 ansible_host=193.40.156.86 ansible_port=14122 ansible_user=ubuntu 
+An4eli-1 ansible_host=193.40.156.86 ansible_port=7222 ansible_user=ubuntu
+An4eli-2 ansible_host=193.40.156.86 ansible_port=17322 ansible_user=ubuntu 
+An4eli-3 ansible_host=193.40.156.86 ansible_port=7922 ansible_user=ubuntu 
 
 [db_servers]
 An4eli-1
-An4eli-3
+An4eli-2
 
 [web_servers]
 An4eli-1
@@ -13,27 +13,27 @@ An4eli-3
 
 [web_app]
 An4eli-1
-An4eli-3
+An4eli-2
 
 [dns_master]
-An4eli-2
+An4eli-3
 
 [dns_slaves]
 An4eli-1
-An4eli-3
+An4eli-2
 
 [dns_servers:children]
 dns_master
 dns_slaves
 
 [prometheus]
-An4eli-2
+An4eli-3
 
 [grafana]
-An4eli-2
+An4eli-3
 
 [influxdb]
-An4eli-2
+An4eli-3
 
 [pinger]
 An4eli-1
@@ -45,8 +45,8 @@ An4eli-3
 
 [haproxy]
 An4eli-1
-An4eli-3
+An4eli-2
 
 [keepalived]
 An4eli-1
-An4eli-3
+An4eli-2

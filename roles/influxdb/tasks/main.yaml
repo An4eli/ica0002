@@ -10,6 +10,12 @@
   ansible.builtin.apt:
     name: influxdb
 
+- name: Influxdb conf
+  ansible.builtin.copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify: Restart influxdb
+
 - name: Start service influxdb
   ansible.builtin.service:
     name: influxdb
@@ -20,20 +26,14 @@
   ansible.builtin.apt:
     name: telegraf
 
-- name: Start service telegraf
-  service:
-      name: telegraf
-      state: started
-      enabled: yes
-
 - name: Telegraf conf
   ansible.builtin.copy:
     src: telegraf.conf
     dest: /etc/telegraf/telegraf.conf
   notify: Restart telegraf
 
-- name: Influxdb conf
-  ansible.builtin.copy:
-    src: influxdb.conf
-    dest: /etc/influxdb/influxdb.conf
-  notify: Restart influxdb
+- name: Start service telegraf
+  service:
+    name: telegraf
+    state: started
+    enabled: yes

@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -978,7 +978,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "haproxy_server_up{instance=\"An4eli-3:9101\"}",
+          "expr": "haproxy_server_up{instance=\"An4eli-2:9101\"}",
           "interval": "",
           "legendFormat": "{{server}}",
           "refId": "A"
@@ -1151,14 +1151,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": false,
-          "expr": "keepalived_vrrp_state{instance=\"An4eli-3:9165\"}",
+          "expr": "keepalived_vrrp_state{instance=\"An4eli-2:9165\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Keepalived An4eli-3",
+      "title": "Keepalived An4eli-2",
       "type": "stat"
     },
     {

@@ -35,7 +35,7 @@ Restore InfluxBD data from the backup:
 
 
 - To restore run this commands as a root user:
-service telegraf stop
-influx -execute 'DROP DATABASE telegraf'
-influxd restore -portable -database telegraf /home/backup/restore
-service telegraf start
+    service telegraf stop
+    influx -execute 'DROP DATABASE telegraf'
+    influxd restore -portable -database telegraf /home/backup/restore
+    service telegraf start
